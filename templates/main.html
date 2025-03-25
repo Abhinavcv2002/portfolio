@@ -13,7 +13,7 @@
     }
 
     nav {
-      background-color: #333;
+      background-color: black;
       color: white;
       padding: 15px;
       position: fixed;
@@ -51,24 +51,50 @@
     .content {
       padding-top: 60px;
     }
+    .image{
+
+    }
+    section {
+      text-align: center;
+      padding: 50px;
+      font-size: 2rem;
+      color: white;
+    }
   </style>
 </head>
 <body>
 
   <nav>
     <ul>
-      <li><a href="#home">Home</a></li>
+      <li><a href="#Intro">Intro</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#contact">Resume</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
+  <section id="Intro">
+    <img class="image" src="../static/photo/main pic.jpeg" alt="img" width="100%" height="auto">
+  </section>
+
   <div class="content">
-    <section id="home" style="height: 100vh; background-color: #f2f2f2;">Home Section</section>
-    <section id="about" style="height: 100vh; background-color: #e0e0e0;">About Section</section>
-    <section id="projects" style="height: 100vh; background-color: #ccc;">Projects Section</section>
-    <section id="contact" style="height: 100vh; background-color: #aaa;">Contact Section</section>
+    <section id="about" style="height: 100vh; background-color: black;">About Section
+
+      <div class="col-md-6">
+        <h2>About Me</h2>
+        <p>This is a brief description about me. I am a web developer with a passion for coding and design.</p>
+          </div>
+          <div class="col-md-6">
+            <img src="../static/photo/about-pic.jpg" alt="About" class="img-fluid">
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <section id="Resume" style="height: 100vh; background-color: black;">Resume Section</section>
+    <section id="projects" style="height: 100vh; background-color: black;">Projects Section</section>
+    <section id="contact" style="height: 100vh; background-color: black;">Contact Section</section>
   </div>
 
 </body>
