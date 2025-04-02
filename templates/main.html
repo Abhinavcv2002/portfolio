@@ -10,6 +10,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      background-color: black;
     }
 
     nav {
@@ -152,6 +153,14 @@
   }
 
   /* Style for the About Me Section */
+
+  .social-links-About{
+    color: white;
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+
+  }
   .about p {
     font-size: 1rem;
     line-height: 1.6;
@@ -180,6 +189,7 @@
     font-size: 1.1rem;
     color: #fff;
   }
+
 /* ------------ */
   /* Basic Styling for the Projects Section */
 .projects {
@@ -212,6 +222,7 @@
 
 .project-title {
   font-size: 18px;
+  color: #a3a1a1;
   margin-top: 10px;
   text-align: center;
 }
@@ -297,20 +308,44 @@ textarea {
 }
 
 .submit-btn {
-  padding: 12px 25px;
   background-color: #2b2b2cbf;
-  color: black;
+  color: #a3a1a1;
   border: none;
-  border-radius: 8px;
   font-size: 1.2em;
   cursor: pointer;
-  transition: background-color 0.3s;
   align-self: center;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; 
+  cursor: pointer; 
+  border-radius: 5px; 
 }
 
 .submit-btn:hover {
-  background-color: #888;
+  background-color: #333;
 }
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 10px; 
+    
+}
+.social-links-footer a {
+    color: white;
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+}
+.social-links-footer a:hover {
+    color: #f39c12; /* Change the color on hover */
+}
+
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
@@ -333,8 +368,8 @@ textarea {
     <ul>
       <li><a href="#Home">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#Resume">Resume</a></li>
-      <li><a href="#Portfolio">Portfolio</a></li>
+      <li><a href="#Education">Education</a></li>
+      <li><a href="#My Work">Work</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -344,78 +379,67 @@ textarea {
   </section>
 
   <div class="content">
+
     <section id="about" style="height: 100vh; background-color: black;">
 
       <div class="col-md-6">
         <h4 class="section-title">About Me</h4>
+        <div class="row g-4 ">
+            <div class="col-md-12">
+                <div class="education-card">
+                    <p>Hello! I'm Abhinav C V, A Full-Stack Web Developer who enjoys crafting thoughtful and impactful web solutions.</p>
+                </div>
+            </div>
+        </div>
+        <h4 class="section-title">i Specialize In</h4>
+        <div class="row g-4 ">
+            <div class="col-md-12">
+                <div class="education-card">
+                  <h3>Backend Development:</h3>
+                    <p> Leveraging the power of Python, Django, and Flask to create robust and efficient server-side applications.</p>
+                    <h3>Frontend Development:</h3><p> Building responsive, user-friendly interfaces with HTML, CSS, JavaScript, and modern frameworks like React.js.</p>
+                    <h3>Database Management: </h3><p>Designing and managing databases with MySQL and SQLite3 to ensure data integrity and optimal performance.</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section id="Education" style="height: 100vh; background-color: black;">
+
+      <div class="col-md-6">
+        <h4 class="section-title">Education</h4>
         <div class="row g-4 "> 
             <div class="col-md-6">
                 <div class="education-card">
                     <h3> Internships</h3>
                     <p class="text-muted">2024 - Present</p>
                     <p> Synnefo Solutions </p>
-                    <p> 6-month pythonfull stack development course with internship</p>
+                    <p> 6-Month Pythonfull Stack Development Course With Internship</p>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="education-card">
-                    <h3>Masters Degree in Computer Application with AI specialization</h3>
-                    <p class="text-muted">2024 - Present</p>
-                    <p>JAIN Online University</p>
-                    <p>Advanced studies in Computer application with specialization in AI.</p>
+                    <h3>Higher Secondary School</h3>
+                    <p class="text-muted">Government Higher Secondary School, 2019 - 2021</p>
+                    <p>Computer Applications</p>
+                    <p>Achieved 70% in final exams</p>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="education-card">
-                    <h3> Bachelor Degree in Computer Application </h3>
+                    <h3> Bachelor Of Computer Application </h3>
                     <p class="text-muted">2021 - 2024 </p>
-                    <p>MG University</p>
-                    <p>CGPA:7.66</p>
+                    <p>Calicut University</p>
+                    <p></p>
                 </div>
-            </div>
-        </div>
-      </div>
-          
-          <div class="col-md-6">
-            <img src="../static/photo/about-pic.jpg" alt="About" class="img-fluid">
-          </div>
-        </div>
-      </div>
-
-    </section>
-    <section id="Resume" style="height: 180vh; background-color: black;">
-      <div class="col-md-6">
-        <h4 class="section-title">Resume</h4>
-        <div class="row g-4"> 
-            <div class="col-md-12">
-                <div class="education-card">
-                    <h3> Bachelor Degree in Computer Application </h3>
-                    <p class="text-muted">2021 - 2024 </p>
-                    <p>MG University</p>
-                    <p>CGPA:7.66</p>
-                </div>
-            </div>
-            <div class="col-md-12">
-              <div class="education-card">
-                  <h3> Bachelor Degree in Computer Application </h3>
-                  <p class="text-muted">2021 - 2024 </p>
-                  <p>MG University</p>
-                  <p>CGPA:7.66</p>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="education-card">
-                  <h3> Bachelor Degree in Computer Application </h3>
-                  <p class="text-muted">2021 - 2024 </p>
-                  <p>MG University</p>
-                  <p>CGPA:7.66</p>
-              </div>
             </div>
         </div>
       </div>
     </section>
     
-    <section id="Portfolio" style="height: 60vh; background-color: black;">Portfolio 
+    <section id="My Work" style="height: 60vh; background-color: black;">My Work 
 
       <section class="projects">
         <div class="filter-select-box">
@@ -424,46 +448,42 @@ textarea {
       
         <ul class="project-list">
           <li class="project-item active" data-filter-item="" data-category="web development">
-            <a href="http://AbhisheksHMS.pythonanywhere.com">
+            <a href="#">
               <div class="project-img">
                 <div class="project-item-icon-box">
                   <ion-icon name="eye-outline"></ion-icon>
                 </div>
-                <img src="../static/photo/project .jpeg" alt="HMS" loading="lazy">
+                <img src="../static/photo/project .jpeg" alt="HMS" loading="lazy">            </a>
               </div>
               <h3 class="project-title">MediCare</h3>
               <p class="project-category">Hospital Management System</p>
-            </a>
           </li>
       
           <li class="project-item active" data-filter-item="" data-category="web development">
-            <a href="http://AbhishekDev.pythonanywhere.com">
+            <a href="#">
               <div class="project-img">
                 <div class="project-item-icon-box">
                   <ion-icon name="eye-outline"></ion-icon>
                 </div>
-                <img src="../static/images/perfume_nest.jpg" alt="finance" loading="lazy">
+                <img src="../static/photo/eyeglass.png" alt="finance" loading="lazy">            </a>
               </div>
-              <h3 class="project-title">Perfume Nest</h3>
+              <h3 class="project-title">eyeglass</h3>
               <p class="project-category">E-commerce</p>
-            </a>
           </li>
       
           <li class="project-item active" data-filter-item="" data-category="web development">
-            <a href="https://ittirarichan.github.io/croma/">
+            <a href="#">
               <div class="project-img">
                 <div class="project-item-icon-box">
                   <ion-icon name="eye-outline"></ion-icon>
                 </div>
-                <img src="../static/images/croma clone.png" alt="croma_clone" loading="lazy" style="height: auto;">
+                <img src="../static/photo/smokie.png" alt="croma_clone" loading="lazy" style="height: auto;">            </a>
               </div>
-              <h3 class="project-title">Croma</h3>
-              <p class="project-category">Index clone</p>
-            </a>
+              <h3 class="project-title">smokie</h3>
+              <p class="project-category">WebSite</p>
           </li>
         </ul>
-      </section>
-      
+      </section> 
     </section>
     
     <section id="contact" style="height: 100vh; background-color: black;">
@@ -495,6 +515,18 @@ textarea {
             
     </section>
   </div>
+
+  <footer class="footer">
+    <div class="container">
+        <p>© 2025 Abhinav C V. All Rights Reserved.</p>
+        <div class="social-links-footer">
+            <a href="https://linkedin.com/in/Abhinav-c-v" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Abhinavcv2002" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/abhi.c.v" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</footer>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </body>
 </html>
