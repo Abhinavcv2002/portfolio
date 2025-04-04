@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <title>Portfolio</title>
   <style>
     body {
@@ -190,6 +191,26 @@
     color: #fff;
   }
 
+  /* ---------------- */
+  /* .skill-box */
+  .skill-box {
+    background-color: #555;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .skill-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  .skill-name {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
 /* ------------ */
   /* Basic Styling for the Projects Section */
 .projects {
@@ -368,6 +389,7 @@ textarea {
     <ul>
       <li><a href="#Home">Home</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#Skills">Skills</a></li>
       <li><a href="#Education">Education</a></li>
       <li><a href="#My Work">Work</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -382,7 +404,7 @@ textarea {
 
     <section id="about" style="height: 100vh; background-color: black;">
 
-      <div class="col-md-6">
+      <div class="row justify-content-center g-4">
         <h4 class="section-title">About Me</h4>
         <div class="row g-4 ">
             <div class="col-md-12">
@@ -406,11 +428,52 @@ textarea {
     </section>
     </div>
 
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<section id="Skills" class="bg-dark py-5" style="height: 100vh; background-color: black;">
+  <div class="container">
+    <div class="row justify-content-center g-4">
+      <!-- Skill 1 -->
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="skill-box text-center p-3">
+          <img src="../static/photo/eyeglass.png" alt="Skill 1" class="img-fluid rounded mb-2" />
+          <p class="skill-name text-white fw-bold">Eyeglass</p>
+        </div>
+      </div>
+
+      <!-- Skill 2 -->
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="skill-box text-center p-3">
+          <img src="../static/photo/main pic.jpeg" alt="Skill 2" class="img-fluid rounded mb-2" />
+          <p class="skill-name text-white fw-bold">Skill 2</p>
+        </div>
+      </div>
+
+      <!-- Skill 3 -->
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="skill-box text-center p-3">
+          <img src="../static/photo/project .jpeg" alt="Skill 3" class="img-fluid rounded mb-2" />
+          <p class="skill-name text-white fw-bold">Skill 3</p>
+        </div>
+      </div>
+
+      <!-- Skill 4 -->
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+        <div class="skill-box text-center p-3">
+          <img src="../static/photo/smokie.png" alt="Skill 4" class="img-fluid rounded mb-2" />
+          <p class="skill-name text-white fw-bold">Skill 4</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
     <section id="Education" style="height: 100vh; background-color: black;">
 
-      <div class="col-md-6">
+      <div class="row justify-content-center g-4">
         <h4 class="section-title">Education</h4>
-        <div class="row g-4 "> 
+        <div class="row g-4"> 
             <div class="col-md-6">
                 <div class="education-card">
                     <h3> Internships</h3>
@@ -439,7 +502,7 @@ textarea {
       </div>
     </section>
     
-    <section id="My Work" style="height: 60vh; background-color: black;">My Work 
+    <section id="My Work" style="height: 50vh; background-color: black;">My Work 
 
       <section class="projects">
         <div class="filter-select-box">
@@ -526,7 +589,8 @@ textarea {
         </div>
     </div>
 </footer>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 </html>
