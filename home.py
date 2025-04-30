@@ -6,7 +6,7 @@ app=Flask(__name__)
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'abhinavcv227@gmail.com'
-app.config['MAIL_PASSWORD'] = ''
+app.config['MAIL_PASSWORD'] = 'jxzg avjy wvbt tvvb'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
@@ -20,9 +20,10 @@ def index():
 def send_message():
     name=request.form['name']
     email=request.form['email']
+    subject=request.form['subject']
     message=request.form['message']
-    msg = Message(subject='Hello', sender=email, recipients=['kumarakshay90574@gmail.com'])
-    msg.body = f"From: {name}\n {email}\n\nMessage:\n{message}"
+    msg = Message(subject='Hello', sender=email, recipients=['abhinavcv227@gmail.com'])
+    msg.body = f"From: {name}\n {email}\n\nsubject:{subject}\n\nMessage:\n{message}"
     mail.send(msg)
     return render_template('index.html', success=True)
 
