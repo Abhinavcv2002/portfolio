@@ -13,8 +13,8 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
 @app.route('/')
-def index():
-    return render_template('index.html')    
+def main():
+    return render_template('main.html')    
 
 @app.route('/send_mail',methods=['POST'])
 def send_message():
@@ -25,7 +25,7 @@ def send_message():
     msg = Message(subject='Hello', sender=email, recipients=['abhinavcv227@gmail.com'])
     msg.body = f"From: {name}\n {email}\n\nsubject:{subject}\n\nMessage:\n{message}"
     mail.send(msg)
-    return render_template('index.html', success=True)
+    return render_template('main.html', success=True)
 
 
 

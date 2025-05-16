@@ -4,18 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <title>Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Abhinav C V - Portfolio</title>
   <style>
+    :root {
+      --primary-color: #f39c12;
+      --dark-bg: #121212;
+      --card-bg: #2b2b2c;
+      --text-light: #ffffff;
+      --text-muted: #a3a1a1;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      background-color: black;
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      scroll-behavior: smooth;
     }
 
+    /* Improved Navigation */
     nav {
-      background-color: black;
+      background-color: rgba(0, 0, 0, 0.9);
       color: white;
       padding: 15px;
       position: fixed;
@@ -23,7 +35,13 @@
       top: 0;
       left: 0;
       z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.95);
     }
 
     nav ul {
@@ -32,623 +50,712 @@
       padding: 0;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
     }
 
     nav ul li {
-      margin: 0 20px;
+      margin: 0 15px;
     }
 
     nav ul li a {
       color: white;
       text-decoration: none;
       font-size: 18px;
-      transition: color 0.3s;
+      transition: all 0.3s;
+      position: relative;
+      padding: 5px 0;
+    }
+
+    nav ul li a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s;
     }
 
     nav ul li a:hover {
-      color: #f39c12;
+      color: var(--primary-color);
     }
 
-    .content {
-      padding-top: 0px;
+    nav ul li a:hover:after {
+      width: 100%;
     }
-    section {
-      text-align: center;
-      padding: 50px;
-      font-size: 2rem;
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
       color: white;
-    }
-    .image{
-      padding: 0%;
-      padding-top: 50px;
-      background-color: black;
+      font-size: 24px;
+      cursor: pointer;
     }
 
-    #Resume {
-    height: 100vh;
-    background-color: black;
-    color: white;
-  }
-
-  .section-title {
-    font-size: 2rem;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 15px;
-  }
-
-  .py-5 {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-
-  .education-card {
-    background-color: #2b2b2cbf;
-    color: rgb(122, 121, 121);
-    padding: 60px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-
-  .education-card h3 {
-    font-size: 1.5rem;
-    color: #ffffff;
-    margin-bottom: 10px;
-  }
-
-  .education-card p {
-    font-size: 1rem;
-    color: #a3a1a1;
-  }
-
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  .col-md-6, .col-md-12 {
-    flex: 1 1 calc(50% - 15px);
-    box-sizing: border-box;
-  }
-
-  /* Responsive Styles */
-  @media (max-width: 992px) {
-    .col-md-6 {
-      flex: 1 1 100%;
-    }
-
-    .col-md-12 {
-      flex: 1 1 100%;
-    }
-
-    .education-card {
-      padding: 15px;
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .section-title {
-      font-size: 1.5rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .education-card {
-      padding: 10px;
-    }
-
-    .section-title {
-      font-size: 1.25rem;
+      font-size: 2.5rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      padding-bottom: 15px;
     }
 
-    .py-5 {
-      padding-top: 3rem;
-      padding-bottom: 3rem;
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height:.3px;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary-color);
     }
-  }
 
-  /* Style for the About Me Section */
-
-  .social-links-About{
-    color: white;
-    margin: 0 10px;
-    font-size: 24px;
-    text-decoration: none;
-
-  }
-  .about p {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .about ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  .about ul li {
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
-
-  .about .col-lg-8 {
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, var(--bg-light) 0%, var(--secondary-light) 100%);
-    padding: 40px;
-    margin: 0 auto;
-  }
-
-  .about .text-center {
-    margin-top: 60px;
-    font-size: 1.1rem;
-    color: #fff;
-  }
-
-  /* ---------------- */
-  /* .skill-box */
-  .skill-box {
-    background-color: #555;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-  }
-
-  .skill-box:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-  }
-
-  .skill-name {
-    font-size: 14px;
-    margin-top: 8px;
-  }
-
-/* ------------ */
-  /* Basic Styling for the Projects Section */
-.projects {
-  padding: 20px;
-}
-
-.project-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
-  gap: 20px;
-}
-
-.project-item {
-  background-color: #2b2b2cbf;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.project-item:hover {
-  transform: scale(1.05); /* Adds a hover effect */
-}
-
-.project-img img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.project-title {
-  font-size: 18px;
-  color: #a3a1a1;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.project-category {
-  font-size: 14px;
-  color: #888;
-  text-align: center;
-}
-
-/* Responsive Layout */
-@media screen and (max-width: 1024px) {
-  .project-list {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .project-list {
-    grid-template-columns: 1fr; /* 1 column on mobile */
-  }
-}
-/* ----- */
-
-/* Contact Section Styling */
-.contact {
-  padding: 40px 20px;
-  background-color: black;
-}
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-h2 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-}
-
-.form-row {
-  display: flex;
-  gap: 40px;
-  width: 100%;
-  justify-content: center;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-}
-
-label {
-  font-size: 1.1em;
-  margin-bottom: 8px;
-  color: #555;
-}
-
-input, textarea {
-  width: 100%;
-  color: #555;
-  padding: 12px;
-  margin-top: 6px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1em;
-  background-color: black;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.submit-btn {
-  background-color: #2b2b2cbf;
-  color: #a3a1a1;
-  border: none;
-  font-size: 1.2em;
-  cursor: pointer;
-  align-self: center;
-  border: none;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px; 
-  cursor: pointer; 
-  border-radius: 5px; 
-}
-
-.submit-btn:hover {
-  background-color: #333;
-}
-
-.footer {
-    background-color: #333;
-    color: white;
-    padding: 5px 0;
-    text-align: center;
-    border-radius: 10px; 
+    /* Home Section */
+    #Home {
+      padding: 0;
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
     
-}
-.social-links-footer a {
-    color: white;
-    margin: 0 10px;
-    font-size: 24px;
-    text-decoration: none;
-}
-.social-links-footer a:hover {
-    color: #f39c12; /* Change the color on hover */
-}
+    #Home img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
+    .home-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .container {
-    padding: 0 15px;
-  }
-  .form-row {
-    flex-direction: column;
-  }
-  .form-group {
-    width: 100%;
-  }
-}
+    .home-content {
+      max-width: 800px;
+    }
 
+    .home-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s;
+    }
+
+    .home-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s;
+    }
+
+    /* About Section */
+    .education-card {
+      background-color: var(--card-bg);
+      color: var(--text-muted);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+
+    .education-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .education-card h3 {
+      font-size: 1.5rem;
+      color: var(--text-light);
+      margin-bottom: 15px;
+    }
+
+    .education-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Skills Section */
+    .skill-box {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      padding: 20px;
+      height: 100%;
+    }
+
+    .skill-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .skill-box img {
+      height: 80px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .skill-name {
+      font-size: 16px;
+      margin-top: 8px;
+      color: var(--text-light);
+    }
+
+    /* Projects Section */
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .project-item {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+      height: 100%;
+    }
+
+    .project-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .project-img {
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+    }
+
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .project-item:hover .project-img img {
+      transform: scale(1.1);
+    }
+
+    .project-content {
+      padding: 20px;
+    }
+
+    .project-title {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .project-category {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Contact Section */
+    .contact-form {
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-control {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--text-light);
+      padding: 12px;
+      border-radius: 5px;
+    }
+
+    .form-control:focus {
+      background-color: rgba(255, 255, 255, 0.15);
+      box-shadow: none;
+      border: 1px solid var(--primary-color);
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .submit-btn {
+      background-color: var(--primary-color);
+      color: #000;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #e67e22;
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #1a1a1a;
+      color: var(--text-light);
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    .social-links-footer {
+      margin: 15px 0;
+    }
+
+    .social-links-footer a {
+      color: var(--text-light);
+      margin: 0 15px;
+      font-size: 22px;
+      transition: color 0.3s;
+      display: inline-block;
+    }
+
+    .social-links-footer a:hover {
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .home-content h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        text-align: center;
+        display: none;
+        padding: 20px 0;
+      }
+      
+      nav ul.show {
+        display: flex;
+      }
+      
+      nav ul li {
+        margin: 10px 0;
+      }
+      
+      .mobile-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 15px;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .home-content h1 {
+        font-size: 2rem;
+      }
+      
+      .education-card {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      section {
+        padding: 60px 15px;
+      }
+      
+      .home-content h1 {
+        font-size: 1.8rem;
+      }
+      
+      .home-content p {
+        font-size: 1rem;
+      }
+      
+      .education-card {
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <nav>
-    <ul>
-      <li><a href="#Home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#Skills">Skills</a></li>
-      <li><a href="#Education">Education</a></li>
-      <li><a href="#My Work">Work</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <!-- Navigation -->
+  <nav id="mainNav">
+    <div class="container">
+      <button class="mobile-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul id="navMenu">
+        <li><a href="#Home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#Skills">Skills</a></li>
+        <li><a href="#Education">Education</a></li>
+        <li><a href="#My-Work">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <section class="image" id="Home">
-    <img class="images" src="../static/photo/main pic.jpeg" alt="img" width="100%" height="auto">
+  <!-- Home Section -->
+  <section id="Home">
+    <img src="../static/photo/main1 pic.jpeg" alt="Hero Image" height="100px">
+    <div class="home-overlay">
+      <div class="home-content">
+        <h1>Hello, I'm <span style="color: var(--primary-color);">Abhinav C V</span></h1>
+        <p>Full-Stack Web Developer | Python | Django | React</p>
+        <a href="#contact" class="btn btn-outline-light btn-lg px-4 me-2">Contact Me</a>
+        <a href="#My-Work" class="btn btn-primary btn-lg px-4" style="background-color: var(--primary-color); border: none;">My Work</a>
+      </div>
+    </div>
   </section>
 
-  <div class="content">
-
-    <section id="about" style="height: 120vh; background-color: black;">
-
-      <div class="row justify-content-center g-4">
-        <h4 class="section-title">About Me</h4>
-        <div class="row g-4 ">
-            <div class="col-md-12">
-                <div class="education-card">
-                    <p>Hello! I'm Abhinav C V, A Full-Stack Web Developer who enjoys crafting thoughtful and impactful web solutions.</p>
-                </div>
-            </div>
-        </div>
-        <h4 class="section-title">i Specialize In</h4>
-        <div class="row g-4 ">
-            <div class="col-md-12">
-                <div class="education-card">
-                  <h3>Backend Development:</h3>
-                    <p> Leveraging the power of Python, Django, and Flask to create robust and efficient server-side applications.</p>
-                    <h3>Frontend Development:</h3><p> Building responsive, user-friendly interfaces with HTML, CSS, JavaScript, and modern frameworks like React.js.</p>
-                    <h3>Database Management: </h3><p>Designing and managing databases with MySQL and SQLite3 to ensure data integrity and optimal performance.</p>
-                </div>
-            </div>
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="row g-4">
+        <div class="col-md-12">
+          <div class="education-card">
+            <p>Hello! I'm Abhinav C V, A Full-Stack Web Developer who enjoys crafting thoughtful and impactful web solutions.</p>
+          </div>
         </div>
       </div>
-    </section>
-    </div>
-
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<section id="Skills" class="bg-dark py-5">
-  <div class="container">
-    <div class="row justify-content-center g-4">
-      <!-- Skill 1 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/html5.png" alt="Skill 1" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">HTML5</p>
-        </div>
-      </div>
-
-      <!-- Skill 2 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/JavaScript.png" alt="Skill 2" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">JavaScript</p>
-        </div>
-      </div>
-
-      <!-- Skill 3 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/CSS3.png" alt="Skill 3" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">CSS3</p>
-        </div>
-      </div>
-
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/Python.jpg" alt="Skill 3" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">Python</p>
-        </div>
-      </div>
-
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/Django.png" alt="Skill 3" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">Django</p>
-        </div>
-      </div>
-
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/GitHub.png" alt="Skill 3" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">GitHub</p>
-        </div>
-      </div>
-
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/Git.png .jpeg" alt="Skill 3" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">Git</p>
-        </div>
-      </div>
-
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/MySQL.jpg .jpeg" alt="Skill 3" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">MySQL</p>
-        </div>
-      </div>
-
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/PostgreSQL.jpg .jpeg" alt="Skill 3" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">PostgreSQL</p>
-        </div>
-      </div>
-
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/Flask.png .jpeg" alt="Skill 3" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">Flask</p>
-        </div>
-      </div>
-
       
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/Bootstrap.jpg .jpeg" alt="Skill 3" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">Bootstrap</p>
+      <h2 class="section-title mt-5">I Specialize In</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="education-card">
+            <h3>Backend Development</h3>
+            <p>Leveraging the power of Python, Django, and Flask to create robust and efficient server-side applications.</p>
+          </div>
         </div>
-      </div>
-
-      <!-- Skill 4 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <div class="skill-box text-center p-3">
-          <img src="../static/photo/React.png" alt="Skill 4" class="img-fluid rounded mb-2" />
-          <p class="skill-name text-white fw-bold">React</p>
+        <div class="col-md-4">
+          <div class="education-card">
+            <h3>Frontend Development</h3>
+            <p>Building responsive, user-friendly interfaces with HTML, CSS, JavaScript, and modern frameworks like React.js.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="education-card">
+            <h3>Database Management</h3>
+            <p>Designing and managing databases with MySQL and SQLite3 to ensure data integrity and optimal performance.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-    <section id="Education" style="height: 100vh; background-color: black;">
-
-      <div class="row justify-content-center g-4">
-        <h4 class="section-title">Education</h4>
-        <div class="row g-4"> 
-            <div class="col-md-5">
-                <div class="education-card">
-                    <h3> Internships</h3>
-                    <p class="text-muted">2024 - Present</p>
-                    <p> Synnefo Solutions </p>
-                    <p> 6-Month Pythonfull Stack Development Course With Internship</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="education-card">
-                    <h3>Higher Secondary School</h3>
-                    <p class="text-muted">Government Higher Secondary School, 2019 - 2021</p>
-                    <p>Computer Applications</p>
-                    <p>Achieved 70% in final exams</p>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="education-card">
-                    <h3> Bachelor Of Computer Application </h3>
-                    <p class="text-muted">2021 - 2024 </p>
-                    <p>Calicut University</p>
-                    <p></p>
-                </div>
-            </div>
+  <!-- Skills Section -->
+  <section id="Skills" class="bg-dark">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <div class="row g-4">
+        <!-- Languages -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/html5.png" alt="HTML5">
+            <p class="skill-name fw-bold">HTML5</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/CSS3.png" alt="CSS3">
+            <p class="skill-name fw-bold">CSS3</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/JavaScript.png" alt="JavaScript">
+            <p class="skill-name fw-bold">JavaScript</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/Python.jpg" alt="Python">
+            <p class="skill-name fw-bold">Python</p>
+          </div>
+        </div>
+        
+        <!-- Frameworks -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/React.png" alt="React">
+            <p class="skill-name fw-bold">React</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/Django.png" alt="Django">
+            <p class="skill-name fw-bold">Django</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/Flask.png" alt="Flask">
+            <p class="skill-name fw-bold">Flask</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/Bootstrap.jpg" alt="Bootstrap">
+            <p class="skill-name fw-bold">Bootstrap</p>
+          </div>
+        </div>
+        
+        <!-- Tools & Databases -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/Git.png" alt="Git">
+            <p class="skill-name fw-bold">Git</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/GitHub.png" alt="GitHub">
+            <p class="skill-name fw-bold">GitHub</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/MySQL.jpg" alt="MySQL">
+            <p class="skill-name fw-bold">MySQL</p>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+          <div class="skill-box text-center">
+            <img src="../static/photo/PostgreSQL.jpg" alt="PostgreSQL">
+            <p class="skill-name fw-bold">PostgreSQL</p>
+          </div>
         </div>
       </div>
-    </section>
-    
-    <section id="My Work" style="height: 70vh; background-color: black;">My Work 
+    </div>
+  </section>
 
-      <section class="projects">
-        <div class="filter-select-box">
-          <button class="filter-select" data-select=""></button>
+  <!-- Education Section -->
+  <section id="Education">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="education-card">
+            <h3>Internships</h3>
+            <p class="text-muted">2024 - Present</p>
+            <p>Synnefo Solutions</p>
+            <p>6-Month Python Full Stack Development Course With Internship</p>
+          </div>
         </div>
-      
-        <ul class="project-list">
-          <li class="project-item active" data-filter-item="" data-category="web development">
-            <a href="#">
-              <div class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-                <img src="../static/photo/project .jpeg" alt="HMS" loading="lazy">            </a>
-              </div>
-              <h3 class="project-title">MediCare</h3>
-              <p class="project-category">Hospital Management System</p>
-          </li>
-      
-          <li class="project-item active" data-filter-item="" data-category="web development">
-            <a href="#">
-              <div class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-                <img src="../static/photo/eyeglass.png" alt="finance" loading="lazy">            </a>
-              </div>
-              <h3 class="project-title">eyeglass</h3>
-              <p class="project-category">E-commerce</p>
-          </li>
-      
-          <li class="project-item active" data-filter-item="" data-category="web development">
-            <a href="#">
-              <div class="project-img">
-                <div class="project-item-icon-box">
-                  <ion-icon name="eye-outline"></ion-icon>
-                </div>
-                <img src="../static/photo/smokie.png" alt="croma_clone" loading="lazy" style="height: auto;">            </a>
-              </div>
-              <h3 class="project-title">smokie</h3>
-              <p class="project-category">WebSite</p>
-          </li>
-        </ul>
-      </section> 
-    </section>
-    
-    <section id="contact" style="height: 100vh; background-color: black;">
-
-      <section class="contact">
-        <div class="container">
-          <h2>Contact Us</h2>
-          <form action="your-server-endpoint" method="post" class="contact-form">
-            <div class="form-row">
-              <div class="form-group">
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-              </div>
-              <div class="form-group">
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <input type="text" id="phone" name="subject" placeholder="Your Phone subject">
-              </div>
-            </div>
-            <div class="form-group">
-              <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message  <i class="fas fa-paper-plane"></i></button>
-          </form>
+        <div class="col-md-6">
+          <div class="education-card">
+            <h3>Bachelor Of Computer Application</h3>
+            <p class="text-muted">2021 - 2024</p>
+            <p>Calicut University</p>
+          </div>
         </div>
-      </section>
-            
-    </section>
-  </div>
+        <div class="col-md-12 mt-4">
+          <div class="education-card">
+            <h3>Higher Secondary School</h3>
+            <p class="text-muted">Government Higher Secondary School, 2019 - 2021</p>
+            <p>Computer Applications</p>
+            <p>Achieved 75% in final exams</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Projects Section -->
+  <section id="My-Work" class="bg-dark">
+    <div class="container">
+      <h2 class="section-title">My Projects</h2>
+      <ul class="project-list">
+        <!-- Project 1 -->
+        <li class="project-item">
+          <div class="project-img">
+            <img src="../static/photo/project .jpeg" alt="MediCare">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">MediCare</h3>
+            <p class="project-category">Hospital Management System</p>
+            <p>A comprehensive hospital management solution built with Django and React.</p>
+            <a href="#" class="btn btn-sm" style="background-color: var(--primary-color); color: #000;">View Project</a>
+          </div>
+        </li>
+        
+        <!-- Project 2 -->
+        <li class="project-item">
+          <div class="project-img">
+            <img src="../static/photo/eyeglass.png" alt="ＯＰＴＩＣＦＲＡＭＥ">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">ＯＰＴＩＣＦＲＡＭＥ</h3>
+            <p class="project-category">E-commerce</p>
+            <p>An online eyewear store with dynamic product filtering and secure checkout.</p>
+            <a href="#" class="btn btn-sm" style="background-color: var(--primary-color); color: #000;">View Project</a>
+          </div>
+        </li>
+        
+        <!-- Project 3 -->
+        <li class="project-item">
+          <div class="project-img">
+            <img src="../static/photo/smokie.png" alt="smokie">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Smokie</h3>
+            <p class="project-category">Website</p>
+            <p>A responsive website with modern design principles and smooth animations.</p>
+            <a href="#" class="btn btn-sm" style="background-color: var(--primary-color); color: #000;">View Project</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="contact-form">
+            <form action="/send_mail" id="contactForm" method="POST">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="submit-btn">
+                  Send Message <i class="fas fa-paper-plane ms-2"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
-        <p>© 2025 Abhinav C V. All Rights Reserved.</p>
-        <div class="social-links-footer">
-            <a href="https://linkedin.com/in/Abhinav-c-v" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Abhinavcv2002" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-            <a href="https://www.instagram.com/abhi.c.v" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-        </div>
+      <p>© 2025 Abhinav C V. All Rights Reserved.</p>
+      <div class="social-links-footer">
+        <a href="https://linkedin.com/in/Abhinav-c-v" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/Abhinavcv2002" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/abhi.c.v" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+      </div>
     </div>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </footer>
 
-
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      document.getElementById('navMenu').classList.toggle('show');
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        document.getElementById('mainNav').classList.add('scrolled');
+      } else {
+        document.getElementById('mainNav').classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        document.getElementById('navMenu').classList.remove('show');
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-
